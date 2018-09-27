@@ -1,7 +1,8 @@
+/* eslint-disable no-alert */
+
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import alert from '../../decorators/alert'
 import Layout from '../../components/Layout'
 
 class Home extends React.Component {
@@ -9,7 +10,6 @@ class Home extends React.Component {
     message: 'Hello, World!'
   }
 
-  @alert('Goodbye, World!')
   showMessage = () => {
     const { message } = this.state
     alert(message)

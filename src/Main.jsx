@@ -4,7 +4,7 @@ import { hydrate } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import 'regenerator-runtime/runtime'
 
-import './global/styles'
+import './global/styles.scss'
 import App from './App'
 
 if (module.hot) {
