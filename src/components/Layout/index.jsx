@@ -1,6 +1,7 @@
 import * as React from 'react'
-import styles from './styles.module.scss'
-import logo from '../../img/logo.png'
+
+const styles = {}
+const logo = ''
 
 function Layout({ children }) {
   return (

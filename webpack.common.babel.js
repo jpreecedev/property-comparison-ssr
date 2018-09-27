@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { resolve } from 'path'
-import HtmlWebPackPlugin from 'html-webpack-plugin'
+import { join, resolve } from 'path'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
@@ -9,10 +8,11 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 
 export default {
   entry: {
-    main: resolve('./src/index.jsx')
+    main: resolve('./src/Main.jsx')
   },
   output: {
-    filename: isDevelopment ? '[name].js' : '[name].[hash].js'
+    path: join(__dirname, 'build'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -100,10 +100,6 @@ export default {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    }),
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
