@@ -1,4 +1,4 @@
-# Webpack 4, React, Jest, Babel 7 starter project with decorators
+# Webpack 4, React, Jest, Babel 7 starter project
 
 [![Build Status](https://travis-ci.org/jpreecedev/property-comparsion-ssr.svg?branch=master)](https://travis-ci.org/jpreecedev/property-comparsion-ssr)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -12,8 +12,6 @@ A pre-configured starter project with the following features (all accurate at ti
 - Jest
 - Enzyme
 - ESLint & Prettier
-- Generator/decorator polyfills
-- Example usage of a decorator and its associated unit test
 
 ## Main commands
 

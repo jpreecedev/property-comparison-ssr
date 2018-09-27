@@ -2,8 +2,8 @@ import { renderToString } from 'react-dom/server'
 import * as React from 'react'
 import { StaticRouter } from 'react-router-dom'
 
-import renderFullPage from './renderFullPage'
-import App from '../App'
+import page from './page'
+import App from '../src/App'
 
 function router(req, res) {
   const context = {}
@@ -14,7 +14,7 @@ function router(req, res) {
     </StaticRouter>
   )
 
-  res.status(200).send(renderFullPage(html, {}))
+  res.status(200).send(page(html, {}))
 }
 
 export default router

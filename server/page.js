@@ -1,4 +1,4 @@
-function renderFullPage(html, preloadedState) {
+function page(html, preloadedState) {
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -27,4 +27,4 @@ function renderFullPage(html, preloadedState) {
   `
 }
 
-export default renderFullPage
+export default page

@@ -18,13 +18,3 @@ test('should render "Hello, World!" as title', () => {
     'A bare bones React boilerplate, featuring Webpack 4, React, Redux, Jest, and Babel 7'
   )
 })
-
-test('should show an alert with the message from the decorator', () => {
-  const renderedComponent = render()
-  const button = renderedComponent.find('button')
-
-  button.simulate('click')
-
-  expect(global.alert).toHaveBeenCalledTimes(1)
-  expect(global.alert).toHaveBeenCalledWith('Goodbye, World!')
-})
