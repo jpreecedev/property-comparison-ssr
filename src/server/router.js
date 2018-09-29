@@ -3,7 +3,7 @@ import * as React from 'react'
 import { StaticRouter } from 'react-router-dom'
 
 import page from './page'
-import App from '../src/App'
+import App from '../client/App'
 
 function router(req, res) {
   const context = {}
@@ -14,7 +14,7 @@ function router(req, res) {
     </StaticRouter>
   )
 
-  res.status(200).send(page(html, {}))
+  res.status(200).send(page(html, { manifest: req.manifest, state: {} }))
 }
 
 export default router
