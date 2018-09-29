@@ -4,12 +4,14 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import ManifestPlugin from 'webpack-manifest-plugin'
+import { join } from 'path'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 const config = {
-  entry: ['./src/client/Main.jsx'],
+  entry: ['./src/server/index.js'],
   output: {
+    path: join(__dirname, './dist/server'),
     filename: isDevelopment ? '[name].js' : '[name].[hash].js'
   },
   module: {
@@ -17,7 +19,20 @@ const config = {
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        include: join(__dirname, 'src'),
+        exclude: /node_modules/,
+        query: {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                targets: {
+                  node: '10'
+                }
+              }
+            ]
+          ]
+        }
       },
       {
         test: /\.module\.s(a|c)ss$/,
