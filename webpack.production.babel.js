@@ -3,6 +3,10 @@
 import merge from 'webpack-merge'
 import common from './webpack.common.babel'
 
-export default merge(common, {
-  mode: 'production'
-})
+const configs = common.map(config =>
+  merge(config, {
+    mode: 'production'
+  })
+)
+
+export default configs

@@ -3,7 +3,11 @@
 import merge from 'webpack-merge'
 import common from './webpack.common.babel'
 
-export default merge(common, {
-  mode: 'development',
-  devtool: 'source-map'
-})
+const configs = common.map(config =>
+  merge(config, {
+    mode: 'development',
+    devtool: 'source-map'
+  })
+)
+
+export default configs
