@@ -2,7 +2,7 @@
 import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import cors from 'cors'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import { readFileSync } from 'fs'
 import router from './router'
 
@@ -11,7 +11,7 @@ function getFilePath(file = '') {
 }
 
 const app = express()
-const manifest = JSON.parse(readFileSync(getFilePath('./manifest.json')))
+const manifest = {'main.css': '/main.css', 'main.js': '/bundle.js'}
 
 function getManifest(req, res, next) {
   req.manifest = manifest
@@ -34,10 +34,10 @@ app.use((req, res, next) => {
   next()
 })
 
-const assets = express.static(getFilePath())
+const assets = express.static(join(__dirname, '../'));
 
 app.use(assets)
-app.get('/', router)
+app.get('*', router)
 
 app.set('port', process.env.PORT || 3002)
 app.listen(app.get('port'))

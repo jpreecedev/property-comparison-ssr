@@ -4,6 +4,8 @@
   "description": "",
   "main": "src/index.jsx",
   "scripts": {
+    "server": "babel ./src -d build --watch",
+    "server:start": "babel ./src -d build && node ./build/server/index.js",
     "start": "cross-env PORT=3002 babel-node ./dist/main.js",
     "build": "webpack --watch --config ./webpack.dev.babel.js",
     "dev": "cross-env NODE_ENV=development webpack --config webpack.dev.babel.js",
