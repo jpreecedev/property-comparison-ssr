@@ -7,11 +7,11 @@ import { readFileSync } from 'fs'
 import router from './router'
 
 function getFilePath(file = '') {
-  return resolve(process.cwd(), './dist', file)
+  return resolve(process.cwd(), './dist/server', file)
 }
 
 const app = express()
-const manifest = {'main.css': '/main.css', 'main.js': '/bundle.js'}
+const manifest = JSON.parse(readFileSync(getFilePath('manifest.json')))
 
 function getManifest(req, res, next) {
   req.manifest = manifest
@@ -34,7 +34,7 @@ app.use((req, res, next) => {
   next()
 })
 
-const assets = express.static(join(__dirname, '../'));
+const assets = express.static(getFilePath())
 
 app.use(assets)
 app.get('*', router)

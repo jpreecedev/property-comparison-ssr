@@ -8,7 +8,6 @@ function page(html, { manifest, state }) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>A bare bones React boilerplate, featuring Webpack 4, React, Redux, Jest, and Babel 7</title>
-    <link rel="stylesheet" type="text/css" href="${manifest['main.css']}" />
   </head>
 
   <body>

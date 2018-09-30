@@ -9,6 +9,7 @@ import { join } from 'path'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 const config = {
+  target: 'node',
   entry: ['./src/server/index.js'],
   output: {
     path: join(__dirname, './dist/server'),
@@ -37,7 +38,7 @@ const config = {
       {
         test: /\.module\.s(a|c)ss$/,
         loader: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'isomorphic-style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -59,8 +60,13 @@ const config = {
         test: /\.s(a|c)ss$/,
         exclude: /\.module.(s(a|c)ss)$/,
         loader: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
+          'isomorphic-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
           {
             loader: 'sass-loader',
             options: {
@@ -104,10 +110,6 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-    }),
     new CopyWebpackPlugin([{ from: './public' }]),
     new ManifestPlugin()
   ]

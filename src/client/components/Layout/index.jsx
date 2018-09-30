@@ -1,4 +1,5 @@
 import * as React from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import styles from './styles.module.scss'
 import logo from '../../img/logo.png'
 
@@ -18,4 +19,4 @@ function Layout({ children }) {
   )
 }
 
-export default Layout
+export default withStyles(styles)(Layout)
